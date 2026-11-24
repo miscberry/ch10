@@ -1,32 +1,28 @@
 public class Fraction{
     
-    //instance variables (attributes, fields)
     private int numerator, denominator;
     
-    //constructors
-    public Fraction() { //default
+    public Fraction() {
 	setNum(1);
 	setDenom(1);
     }
     
-    public Fraction(int n, int d) { //parameterized constructor
+    public Fraction(int n, int d) {
 	setNum(n);
 	setDenom(d);
     }
     
-    public Fraction(String f) { //takes a String like "100/3"
+    public Fraction(String f) {
 	int slash = f.indexOf("/");
 	setNum(Integer.parseInt(f.substring(0, slash)));
 	setDenom(Integer.parseInt(f.substring(slash+1)));
     }
     
-    public Fraction(Fraction f) { //copy constructor
+    public Fraction(Fraction f) {
 	numerator = f.numerator;
 	denominator = f.denominator;
     }
     
-    //behaviour methods
-    //accessor methods
     public int getNum() {
 	return numerator;
     }
@@ -42,7 +38,6 @@ public class Fraction{
 	return (double) numerator/denominator;
     }
     
-    //mutator methods
     public void setNum(int n) {
 	numerator = n;
     }
@@ -60,13 +55,12 @@ public class Fraction{
 	int g = gcf(numerator, denominator);
 	numerator = numerator/g;
 	denominator = denominator/g;
-	if(denominator < 0) { //keep the negative sign on the numerator
+	if(denominator < 0) {
 	    numerator = -numerator;
 	    denominator = -denominator;
 	}
     }
     
-    //static methods
     public static Fraction multiply(Fraction a, Fraction b) {
 	int n = a.getNum()*b.getNum();
 	int d = a.getDenom()*b.getDenom();
@@ -76,7 +70,7 @@ public class Fraction{
     }
     
     public static Fraction divide(Fraction a, Fraction b) {
-	if(b.getNum() == 0) { //flipping 0/x would make a zero denominator
+	if(b.getNum() == 0) {
 	    System.err.println("Error: Can't divide by zero");
 	    return new Fraction();
 	}
@@ -100,11 +94,10 @@ public class Fraction{
 	return difference;
     }
     
-    //helper methods
-    private static int gcf(int a, int b) { //Euclid's algorithm
+    private static int gcf(int a, int b) {
 	a = Math.abs(a);
 	b = Math.abs(b);
-	if(a == 0 || b == 0) { //the GCF of 0 and b is b
+	if(a == 0 || b == 0) {
 	    return Math.max(a, b);
 	}
 	while(a != b) {
