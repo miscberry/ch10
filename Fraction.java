@@ -1,10 +1,13 @@
+import java.util.Random;
+
 public class Fraction{
     
     private int numerator, denominator;
+    Random random = new Random();
     
     public Fraction() {
-	setNum(1);
-	setDenom(1);
+	setNum(random.nextInt(9) + 1);
+	setDenom(random.nextInt(9) + 1);
     }
     
     public Fraction(int n, int d) {
@@ -59,6 +62,10 @@ public class Fraction{
 	    numerator = -numerator;
 	    denominator = -denominator;
 	}
+    }
+    
+    public boolean equals(Fraction f) {
+	return getNum() == f.getNum() && getDenom() == f.getDenom();
     }
     
     public static Fraction multiply(Fraction a, Fraction b) {

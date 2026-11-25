@@ -29,7 +29,7 @@ public class FractionQuiz {
 	    else                   cAns = Fraction.subtract(f1, f2);
 	    cAns.reduce();
 	    if(!ans.equals("quit")) {
-		if (ans.equals(cAns.toString())) {
+		if (cAns.equals(new Fraction(ans)) ) {
 		    System.out.printf("Correct!%n%n");
 		    correct++;
 		} else {
@@ -38,8 +38,7 @@ public class FractionQuiz {
 		total++;
 	    }
 	}
-	double percent = (double) correct / total;
-	System.out.printf("You answered %d/%d correctly, for a score of %.2f percent!", correct, total, percent);
+	int percent = (int) Math.round(correct * 100.0 / total);
+	System.out.printf("You answered %d/%d correctly, for a score of %d percent!", correct, total, percent);
     }
-    
 }
